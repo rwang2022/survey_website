@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect, url_for
 import random
 
 app = Flask(__name__)
+app.secret_key = 'a8wgh0ehb09a90u093uy901egh09jdwijogi'
 
 # Define survey questions
 questions = [
@@ -19,7 +20,7 @@ all_responses = {q: [] for q in questions}
 def survey():
     # Check if the user already submitted
     if session.get('submitted'):
-        return render_template('results.html', questions=questions)
+        return redirect(url_for('show_results'))
 
     if request.method == 'POST':
         responses = {question: request.form.get(question, '') for question in questions}
@@ -31,6 +32,8 @@ def survey():
                     
         # Mark the session as submitted
         session['submitted'] = True  
+        
+        return redirect(url_for('show_results')) 
  
     return render_template('survey.html', questions=questions)
 
