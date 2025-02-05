@@ -17,6 +17,10 @@ all_responses = {q: [] for q in questions}
 
 @app.route('/', methods=['GET', 'POST'])
 def survey():
+    # Check if the user already submitted
+    if session.get('submitted'):
+        return render_template('results.html', questions=questions)
+
     if request.method == 'POST':
         responses = {question: request.form.get(question, '') for question in questions}
         
@@ -25,6 +29,9 @@ def survey():
             if answer:
                 all_responses[question].append(answer)
                     
+        # Mark the session as submitted
+        session['submitted'] = True  
+ 
     return render_template('survey.html', questions=questions)
 
 
