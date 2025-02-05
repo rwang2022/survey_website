@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey</title>
+</head>
+<body>
+    <h1>Survey</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <label>{{ question }}</label><br>
+            <input type="text" name="{{ question }}" required><br><br>
+        {% endfor %}
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+

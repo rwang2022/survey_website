@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Results</title>
+</head>
+<body>
+    <h1>Randomized Survey Results</h1>
+    {% for question, answers in response_lists.items() %}
+        <h3>{{ question }}</h3>
+        <p>{{ answers }}</p>
+    {% endfor %}
+    <a href="/">Back to Survey</a>
+</body>
+</html>
