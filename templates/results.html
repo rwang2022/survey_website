@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Survey Results</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Cute Survey Results 💖</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Randomized Survey Results</h1>
-    {% for question, answers in response_lists.items() %}
-        <h3>{{ question }}</h3>
-        <p>{{ answers }}</p>
-    {% endfor %}
-    <a href="/">Back to Survey</a>
+    <div class="container">
+        <h1>🌸 Cute & Fun Survey Results 🌸</h1>
+        {% for question, answers in response_lists.items() %}
+            <h3>{{ question }}</h3>
+            <ul>
+                {% for answer in answers %}
+                    <li>{{ answer }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <a href="/" class="back-button">💫 Back to Survey 💫</a>
+    </div>
 </body>
 </html>

@@ -1,19 +1,28 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Survey</title>
-</head>
-<body>
-    <h1>Survey</h1>
-    <form method="POST">
-        {% for question in questions %}
-            <label>{{ question }}</label><br>
-            <input type="text" name="{{ question }}" required><br><br>
-        {% endfor %}
-        <p style="color: red;">If you submit you will not be able to submit again. </p>
-        <p style="color: red;">If you want to work on this later, you can close this tab and your work will be saved in cookies.</p>
-        <input type="submit" value="Submit">
-    </form>
-</body>
-</html>
 
+<head>
+	<title>✨ Cute & Fun Survey ✨</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<h1>💖 Survey 💖</h1>
+	<form method="POST">
+		{% for question in questions %}
+		<label>{{ question }}</label><br />
+		<input type="text" name="{{ question }}" required /><br /><br />
+		{% endfor %}
+		<p style="color: red">
+			If you submit, you will NOT be able to submit again.
+		</p>
+		<p style="color: red">
+			If you want to work on this later, you can close this tab and your work
+			will be saved in cookies.
+		</p>
+		<input type="submit" value="🌸 Submit 🌸" />
+	</form>
+</body>
+
+</html>
