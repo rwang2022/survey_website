@@ -56,16 +56,19 @@ def survey():
 
 @app.route('/results', methods=['GET', 'POST'])
 def show_results():
+    auth = False
     if request.method == 'POST':
         entered_password = request.form.get('password')
         if entered_password == app.password:
-            session['authenticated'] = True  # ✅ Grant access
-            return redirect(url_for('show_results'))
+            # session['authenticated'] = True  # ✅ Grant access
+            auth = True
+            return render_template('results.html', response_lists=all_responses)
         else:
-            flash("❌ Incorrect password. Try again.")
+            print("❌ Incorrect password. Try again.")
             return render_template('password_prompt.html')
 
-    if not session.get('authenticated'):
+    # if not session.get('authenticated'):
+    if not auth: 
         return render_template('password_prompt.html')
 
     return render_template('results.html', response_lists=all_responses)
